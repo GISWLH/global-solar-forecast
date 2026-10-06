@@ -25,7 +25,7 @@ class TestForecastConnectionErrors(unittest.TestCase):
     @patch("streamlit.error")
     @patch("requests.post")
     def test_connection_error_returns_none(
-        self, mock_post: MagicMock, mock_error: MagicMock, *_args: object
+        self, mock_post: MagicMock, mock_error: MagicMock, *_args: object,
     ) -> None:
         mock_post.side_effect = requests.ConnectionError("Connection aborted")
         import forecast as forecast_mod
@@ -39,7 +39,7 @@ class TestForecastConnectionErrors(unittest.TestCase):
     @patch("streamlit.error")
     @patch("requests.post")
     def test_timeout_returns_none(
-        self, mock_post: MagicMock, mock_error: MagicMock, *_args: object
+        self, mock_post: MagicMock, mock_error: MagicMock, *_args: object,
     ) -> None:
         mock_post.side_effect = requests.Timeout("timed out")
         import forecast as forecast_mod
@@ -52,7 +52,7 @@ class TestForecastConnectionErrors(unittest.TestCase):
     @patch("streamlit.error")
     @patch("requests.post")
     def test_http_error_status_returns_none(
-        self, mock_post: MagicMock, mock_error: MagicMock, *_args: object
+        self, mock_post: MagicMock, mock_error: MagicMock, *_args: object,
     ) -> None:
         response = MagicMock()
         response.status_code = 503
